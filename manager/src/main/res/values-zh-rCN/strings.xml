@@ -7,7 +7,7 @@
     <string name="secure_settings">安全设置</string>
     <string name="system_settings">系统设置</string>
     <string name="android_properties">安卓属性</string>
-    <string name="astrostar_environment">Axeron 环境</string>
+    <string name="astrostar_environment">AstroStar 环境</string>
     <string name="search_label">搜索</string>
     <string name="home">主页</string>
     <string name="privilege">特权</string>
@@ -34,7 +34,7 @@
     <string name="plugin_author">作者</string>
     <string name="plugin_id">ID</string>
     <string name="plugin_version_code">版本号</string>
-    <string name="plugin_astrostar_support">Axeron支持</string>
+    <string name="plugin_astrostar_support">AstroStar支持</string>
     <string name="plugin_update_json">更新配置文件</string>
     <string name="plugin_update_json_empty">无</string>
     <string name="ignite">重载</string>

@@ -7,7 +7,7 @@
     <string name="secure_settings">Secure Settings</string>
     <string name="system_settings">System Settings</string>
     <string name="android_properties">Android Properties</string>
-    <string name="astrostar_environment">Axeron Environment</string>
+    <string name="astrostar_environment">AstroStar Environment</string>
     <string name="search_label">Search</string>
     <string name="home">Home</string>
     <string name="privilege">Privilege</string>
@@ -34,7 +34,7 @@
     <string name="plugin_author">Author</string>
     <string name="plugin_id">ID</string>
     <string name="plugin_version_code">VersionCode</string>
-    <string name="plugin_astrostar_support">AxeronSupport</string>
+    <string name="plugin_astrostar_support">AstroStarSupport</string>
     <string name="plugin_update_json">UpdateJson</string>
     <string name="plugin_update_json_empty">Empty</string>
     <string name="ignite">Ignite</string>
