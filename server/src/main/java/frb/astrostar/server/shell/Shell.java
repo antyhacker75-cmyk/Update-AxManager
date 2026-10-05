@@ -12,7 +12,7 @@ import rikka.rish.RishConfig;
 public class Shell extends Rish {
 
     public static void main(String[] args, String packageName, IBinder binder, Handler handler) {
-        RishConfig.init(binder, AstroStarApiConstant.server.BINDER_DESCRIPTOR, 30000);
+        RishConfig.init(binder, AstroStarApiConstant.server.BINDER_DESCRIPTOR, 24 * 60 * 60 * 1000);
         AstroStar.onBinderReceived(binder, packageName);
         AstroStar.addBinderReceivedListenerSticky(() -> {
             handler.post(() -> new Shell().start(args));
