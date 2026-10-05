@@ -7,7 +7,7 @@
     <string name="secure_settings">Pengaturan Aman</string>
     <string name="system_settings">Pengaturan Sistem</string>
     <string name="android_properties">Properti Android</string>
-    <string name="axeron_environment">Lingkungan Axeron</string>
+    <string name="astrostar_environment">Lingkungan Axeron</string>
     <string name="search_label">Cari</string>
     <string name="home">Beranda</string>
     <string name="privilege">Hak Istimewa</string>
@@ -34,7 +34,7 @@
     <string name="plugin_author">Penulis</string>
     <string name="plugin_id">ID</string>
     <string name="plugin_version_code">KodeVersi</string>
-    <string name="plugin_axeron_support">DukunganAxeron</string>
+    <string name="plugin_astrostar_support">DukunganAxeron</string>
     <string name="plugin_update_json">UpdateJson</string>
     <string name="plugin_update_json_empty">Kosong</string>
     <string name="ignite">Ignite</string>
@@ -161,8 +161,8 @@
     <string name="shell_restriction_desc">Fitur ini akan membatasi pemrosesan latar belakang.</string>
     <string name="compat_mode">Mode Kompatibilitas</string>
     <string name="compat_mode_desc">Anda akan menggunakan busybox untuk mencegah perintah yang tidak didukung.</string>
-    <string name="axeron_permission">Cegat AX-Permission</string>
-    <string name="axeron_permission_desc">Cegat manajer izin yang dibangun di atas Shizuku-API menggunakan Ax-Environment</string>
+    <string name="astrostar_permission">Cegat AX-Permission</string>
+    <string name="astrostar_permission_desc">Cegat manajer izin yang dibangun di atas Shizuku-API menggunakan Ax-Environment</string>
     <string name="tcp_mode">Mode TCP</string>
     <string name="tcp_mode_desc">Memungkinkan AxManager untuk memulai ulang tanpa Wi-Fi (AxManager harus pernah dimulai sekali sejak booting)</string>
     <string name="invalid_port">Port harus antara 1024 dan 65535</string>

@@ -7,7 +7,7 @@
     <string name="secure_settings">安全设置</string>
     <string name="system_settings">系统设置</string>
     <string name="android_properties">安卓属性</string>
-    <string name="axeron_environment">Axeron 环境</string>
+    <string name="astrostar_environment">Axeron 环境</string>
     <string name="search_label">搜索</string>
     <string name="home">主页</string>
     <string name="privilege">特权</string>
@@ -34,7 +34,7 @@
     <string name="plugin_author">作者</string>
     <string name="plugin_id">ID</string>
     <string name="plugin_version_code">版本号</string>
-    <string name="plugin_axeron_support">Axeron支持</string>
+    <string name="plugin_astrostar_support">Axeron支持</string>
     <string name="plugin_update_json">更新配置文件</string>
     <string name="plugin_update_json_empty">无</string>
     <string name="ignite">重载</string>
@@ -161,8 +161,8 @@
     <string name="shell_restriction_desc">开启后将限制命令在后台执行</string>
     <string name="compat_mode">Busybox 兼容模式</string>
     <string name="compat_mode_desc">开启后将使用 Busybox 来拦截不支持的命令。</string>
-    <string name="axeron_permission">AX-权限接管</string>
-    <string name="axeron_permission_desc">使用基于 Shizuku-API 构建的 Ax-Environment 接管授权请求</string>
+    <string name="astrostar_permission">AX-权限接管</string>
+    <string name="astrostar_permission_desc">使用基于 Shizuku-API 构建的 Ax-Environment 接管授权请求</string>
     <string name="tcp_mode">无线调试模式</string>
     <string name="tcp_mode_desc">允许 AxManager 在没有 Wi-Fi 的情况下自动激活（AxManager 在开机后至少激活过一次）</string>
     <string name="invalid_port">端口必须介于 1024 和 65535 之间</string>

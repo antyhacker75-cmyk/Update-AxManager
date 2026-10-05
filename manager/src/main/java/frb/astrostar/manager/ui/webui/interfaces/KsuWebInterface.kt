@@ -22,7 +22,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.google.gson.GsonBuilder
 import com.google.gson.ToNumberPolicy
 import frb.astrostar.api.AstroStar
-import frb.astrostar.api.AatroStarPluginService
+import frb.astrostar.api.AstroStarPluginService
 import frb.astrostar.server.util.flattenOneLevel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking

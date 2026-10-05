@@ -7,7 +7,7 @@
     <string name="secure_settings">Secure Settings</string>
     <string name="system_settings">System Settings</string>
     <string name="android_properties">Android Properties</string>
-    <string name="axeron_environment">Axeron Environment</string>
+    <string name="astrostar_environment">Axeron Environment</string>
     <string name="search_label">Search</string>
     <string name="home">Home</string>
     <string name="privilege">Privilege</string>
@@ -34,7 +34,7 @@
     <string name="plugin_author">Author</string>
     <string name="plugin_id">ID</string>
     <string name="plugin_version_code">VersionCode</string>
-    <string name="plugin_axeron_support">AxeronSupport</string>
+    <string name="plugin_astrostar_support">AxeronSupport</string>
     <string name="plugin_update_json">UpdateJson</string>
     <string name="plugin_update_json_empty">Empty</string>
     <string name="ignite">Ignite</string>
@@ -161,8 +161,8 @@
     <string name="shell_restriction_desc">This feature will restrict background processing.</string>
     <string name="compat_mode">Compatibility Mode</string>
     <string name="compat_mode_desc">You will use busybox to prevent unsupported command.</string>
-    <string name="axeron_permission">Astro Star-Permission Intercept</string>
-    <string name="axeron_permission_desc">Intercept permission manager built on Shizuku-API using Astro Star-Environment</string>
+    <string name="astrostar_permission">Astro Star-Permission Intercept</string>
+    <string name="astrostar_permission_desc">Intercept permission manager built on Shizuku-API using Astro Star-Environment</string>
     <string name="tcp_mode">TCP Mode</string>
     <string name="tcp_mode_desc">Allows Astro Star to restart without Wi-Fi (Astro Star must have started once since reboot)</string>
     <string name="invalid_port">Port must be between 1024 and 65535</string>
