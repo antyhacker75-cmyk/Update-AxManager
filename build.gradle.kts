@@ -16,17 +16,9 @@ plugins {
 }
 
 apply(from = "api/manifest.gradle.kts")
-val gitCommitCount = if (file(".git").exists()) {
-    try {
-        providers.exec {
-            commandLine("git", "rev-list", "--count", "HEAD")
-        }.standardOutput.asText.get().trim().toInt()
-    } catch (e: Exception) {
-        100
-    }
-} else {
-    100
-}
+val gitCommitCount = providers.exec {
+    commandLine("git", "rev-list", "--count", "HEAD")
+}.standardOutput.asText.get().trim().toInt()
 val verCode = findProperty("api_version_code") as Int
 val verName = "${findProperty("api_version_name")}.r${gitCommitCount}"
 
