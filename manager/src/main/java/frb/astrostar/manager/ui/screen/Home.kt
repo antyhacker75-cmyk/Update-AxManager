@@ -730,7 +730,7 @@ fun InfoCard(activateViewModel: ActivateViewModel) {
 @Composable
 fun LearnCard() {
     val uriHandler = LocalUriHandler.current
-    val learnAxManager = "https://github.com/antyhacker75-cmyk/AxManager"
+    val learnAxManager = "https://antyhacker75-cmyk.github.io/AxManager/"
     val primary = MaterialTheme.colorScheme.primary
     val onSurface = MaterialTheme.colorScheme.onSurface
     val onSurfaceVariant = MaterialTheme.colorScheme.onSurfaceVariant
@@ -784,7 +784,7 @@ fun LearnCard() {
 @Composable
 fun IssueReportCard() {
     val uriHandler = LocalUriHandler.current
-    val githubIssueUrl = "https://github.com/antyhacker75-cmyk/AxManager/issues"
+    // val githubIssueUrl = "https://github.com/antyhacker75-cmyk/AxManager/issues"
     val telegramUrl = "https://t.me/WashiWashi123"
     val primary = MaterialTheme.colorScheme.primary
     val onSurface = MaterialTheme.colorScheme.onSurface
@@ -824,6 +824,8 @@ fun IssueReportCard() {
                 )
             }
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                // GitHub report button — DISABLED
+                /*
                 Box(
                     modifier = Modifier
                         .size(44.dp)
@@ -838,6 +840,7 @@ fun IssueReportCard() {
                         modifier = Modifier.size(22.dp)
                     )
                 }
+                */
                 Box(
                     modifier = Modifier
                         .size(44.dp)
