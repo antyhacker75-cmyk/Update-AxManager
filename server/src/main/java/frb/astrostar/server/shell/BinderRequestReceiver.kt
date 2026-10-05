@@ -22,7 +22,7 @@ class BinderRequestReceiver : BroadcastReceiver() {
     fun requestRunBackground(context: Context) {
         try {
             val packageName: String? = context.packageName
-            val pm: PowerManager = getSystemService(POWER_SERVICE) as PowerManager
+            val pm: PowerManager = context.getSystemService(POWER_SERVICE) as PowerManager
             if (!pm.isIgnoringBatteryOptimizations(packageName)) {
                 val intent = Intent()
                 intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
