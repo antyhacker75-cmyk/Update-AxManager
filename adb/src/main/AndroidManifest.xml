@@ -10,7 +10,9 @@
             android:name="frb.astrostar.adb.AdbPairingService"
             android:enabled="true"
             android:exported="false"
-            android:foregroundServiceType="shortService"
-            tools:ignore="NewApi" />
+            android:foregroundServiceType="specialUse"
+            tools:ignore="NewApi">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Wireless ADB pairing and permission intercept service for AstroStar" />
+        </service>
     </application>
 </manifest>
