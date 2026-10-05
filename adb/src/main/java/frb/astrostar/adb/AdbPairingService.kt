@@ -1,4 +1,4 @@
-package frb.astrostar.adb
+package frb.axeron.adb
 
 import android.app.ForegroundServiceStartNotAllowedException
 import android.app.Notification
@@ -16,8 +16,8 @@ import android.provider.Settings
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
-import frb.astrostar.api.core.AstroStarSettings
-import frb.astrostar.api.core.Starter
+import frb.axeron.api.core.AxeronSettings
+import frb.axeron.api.core.Starter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
