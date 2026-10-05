@@ -666,9 +666,9 @@ fun DeveloperInfo(
     onDismissRequest: () -> Unit
 ) {
     val uriHandler = LocalUriHandler.current
-    val githubUrl = "https://github.com/fahrez182"
-    val telegramUrl = "https://t.me/fahrezone"
-    val sociabuzzUrl = "https://sociabuzz.com/fahrezone/tribe"
+    val githubUrl = "https://github.com/renz2451"
+    val telegramUrl = "https://t.me/WashiWashi123"
+    val sociabuzzUrl = "https://sociabuzz.com/astrostarrenz/tribe"
 
     if (showDialog) {
         ModalBottomSheet(
@@ -705,7 +705,7 @@ fun DeveloperInfo(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = "fahrez182 (FahrezONE)",
+                    text = "renz2154 (Astro Star Renz)",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -718,7 +718,7 @@ fun DeveloperInfo(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = "“Everything is an Idea”",
+                    text = "“Create, Recreate, Improve, Reimprove”",
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
