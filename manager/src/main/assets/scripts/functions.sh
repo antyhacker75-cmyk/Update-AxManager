@@ -152,14 +152,9 @@ install_plugin() {
   local MODROOT_UPDATE="$ASTROSTARDIR/plugins_update"
   MODID=$(grep_prop id "$TMPPROP")
   MODNAME=$(grep_prop name "$TMPPROP")
-  MODAUTH=$(grep_prop author "$TMPPROP")
-  [ -z "$MODPLUGIN" ] && MODPLUGIN=$(grep_prop astrostarPlugin "$TMPPROP")
+  MODPLUGIN=$(grep_prop astrostarPlugin "$TMPPROP")
   [ -z "$MODPLUGIN" ] && MODPLUGIN=$(grep_prop axeronPlugin "$TMPPROP")
-  [ -z "$MODPLUGIN" ] && MODPLUGIN=$(grep_prop axeronPlugin "$TMPPROP")
-  
   [ -z "$MODPLUGIN" ] && abort "! This module not supporting AxManager Plugin!"
-
-  [ "$MODPLUGIN" -gt "$ASTROSTARVER" ] && abort "! This module need AxManager Version >= $MODPLUGIN!"
 
   MODPATH=$MODROOT/$MODID
   MODPATH_UPDATE=$MODROOT_UPDATE/$MODID
