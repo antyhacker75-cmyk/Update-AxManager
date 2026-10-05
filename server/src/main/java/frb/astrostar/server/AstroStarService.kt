@@ -166,7 +166,7 @@ open class AstroStarService :
         fun sendBinderToUserApp(binder: IBinder, packageName: String, userId: Int, retry: Boolean) {
             try {
                 DeviceIdleControllerApis.addPowerSaveTempWhitelistApp(
-                    packageName, 30 * 1000, userId,
+                    packageName, 24 * 60 * 60 * 1000, userId,
                     316/* PowerExemptionManager#REASON_SHELL */, "shell"
                 )
                 LOGGER.v("Add %d:%s to power save temp whitelist for 30s", userId, packageName)
