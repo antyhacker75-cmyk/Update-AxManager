@@ -15,6 +15,9 @@ import android.os.IBinder
 import android.provider.Settings
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import frb.astrostar.api.core.AstroStarSettings
 import frb.astrostar.api.core.Starter
@@ -76,7 +79,7 @@ class AdbPairingService : Service() {
 
         val notification = createInputNotification(port)
 
-        getSystemService(NotificationManager::class.java)
+        NotificationManagerCompat.from(this)
             .notify(NOTIFICATION_ID, notification)
     }
 
@@ -166,7 +169,7 @@ class AdbPairingService : Service() {
                     Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
                     e is ForegroundServiceStartNotAllowedException
                 ) {
-                    getSystemService(NotificationManager::class.java)
+                    NotificationManagerCompat.from(this)
                         .notify(NOTIFICATION_ID, notification)
                 }
             }
@@ -430,34 +433,20 @@ class AdbPairingService : Service() {
             stopSearch()
         }
 
-        getSystemService(NotificationManager::class.java)
-            .notify(
-                NOTIFICATION_ID,
-                Notification.Builder(
-                    this,
-                    NOTIFICATION_CHANNEL
-                )
-                    .setColor(
-                        getColor(
-                            R.color.notification
-                        )
-                    )
-                    .setSmallIcon(
-                        R.drawable.ic_astrostar
-                    )
-                    .setContentTitle(title)
-                    .setContentText(text)
-                    .apply {
+        val notification = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL)
+            .setColor(ContextCompat.getColor(this, R.color.notification))
+            .setSmallIcon(R.drawable.ic_astrostar)
+            .setContentTitle(title)
+            .setContentText(text)
+            .apply {
+                if (!success) {
+                    addAction(retryNotificationAction)
+                }
+            }
+            .build()
 
-                        if (!success) {
-                            addAction(
-                                retryNotificationAction
-                            )
-                        }
-
-                    }
-                    .build()
-            )
+        NotificationManagerCompat.from(this)
+            .notify(NOTIFICATION_ID, notification)
 
         if (isConnect && success) {
 
@@ -465,11 +454,7 @@ class AdbPairingService : Service() {
 
                 delay(3000)
 
-                getSystemService(
-                    NotificationManager::class.java
-                ).cancel(
-                    NOTIFICATION_ID
-                )
+                NotificationManagerCompat.from(this@AdbPairingService).cancel(NOTIFICATION_ID)
 
                 stopSelf()
             }
@@ -492,7 +477,7 @@ class AdbPairingService : Service() {
                     0
             )
 
-        Notification.Action.Builder(
+        NotificationCompat.Action.Builder(
             null,
             "Stop searching",
             pendingIntent
@@ -512,7 +497,7 @@ class AdbPairingService : Service() {
                     0
             )
 
-        Notification.Action.Builder(
+        NotificationCompat.Action.Builder(
             null,
             "Retry",
             pendingIntent
@@ -543,7 +528,7 @@ class AdbPairingService : Service() {
                     PendingIntent.FLAG_UPDATE_CURRENT
             )
 
-        Notification.Action.Builder(
+        NotificationCompat.Action.Builder(
             null,
             "Enter pairing code",
             pendingIntent
@@ -554,7 +539,7 @@ class AdbPairingService : Service() {
 
     private fun replyNotificationAction(
         port: Int
-    ): Notification.Action {
+    ): NotificationCompat.Action {
 
         val action =
             replyNotificationAction
@@ -575,24 +560,11 @@ class AdbPairingService : Service() {
 
     private val searchingNotification by unsafeLazy {
 
-        Notification.Builder(
-            this,
-            NOTIFICATION_CHANNEL
-        )
-            .setColor(
-                getColor(
-                    R.color.notification
-                )
-            )
-            .setSmallIcon(
-                R.drawable.ic_astrostar
-            )
-            .setContentTitle(
-                "Searching for pairing service"
-            )
-            .addAction(
-                stopNotificationAction
-            )
+        NotificationCompat.Builder(this, NOTIFICATION_CHANNEL)
+            .setColor(ContextCompat.getColor(this, R.color.notification))
+            .setSmallIcon(R.drawable.ic_astrostar)
+            .setContentTitle("Searching for pairing service")
+            .addAction(stopNotificationAction)
             .build()
     }
 
@@ -600,44 +572,20 @@ class AdbPairingService : Service() {
         port: Int
     ): Notification {
 
-        return Notification.Builder(
-            this,
-            NOTIFICATION_CHANNEL
-        )
-            .setColor(
-                getColor(
-                    R.color.notification
-                )
-            )
-            .setContentTitle(
-                "Pairing service found"
-            )
-            .setSmallIcon(
-                R.drawable.ic_astrostar
-            )
-            .addAction(
-                replyNotificationAction(port)
-            )
+        return NotificationCompat.Builder(this, NOTIFICATION_CHANNEL)
+            .setColor(ContextCompat.getColor(this, R.color.notification))
+            .setContentTitle("Pairing service found")
+            .setSmallIcon(R.drawable.ic_astrostar)
+            .addAction(replyNotificationAction(port))
             .build()
     }
 
     private val workingNotification by unsafeLazy {
 
-        Notification.Builder(
-            this,
-            NOTIFICATION_CHANNEL
-        )
-            .setColor(
-                getColor(
-                    R.color.notification
-                )
-            )
-            .setContentTitle(
-                "Pairing in progress"
-            )
-            .setSmallIcon(
-                R.drawable.ic_astrostar
-            )
+        NotificationCompat.Builder(this, NOTIFICATION_CHANNEL)
+            .setColor(ContextCompat.getColor(this, R.color.notification))
+            .setContentTitle("Pairing in progress")
+            .setSmallIcon(R.drawable.ic_astrostar)
             .build()
     }
 
