@@ -100,11 +100,8 @@ class ShizukuServiceIntercept(val shizukuIntercept: ShizukuIntercept) : IShizuku
         val userId = UserHandleCompat.getUserId(callingUid)
         LOGGER.i("exit: CallingUid:%s, UserId:%s", callingUid, userId)
         val packages = PackageManagerApis.getPackagesForUidNoThrow(callingUid)
-        shizukuIntercept.enableShizukuService(false)
-        if (packages.size == 1) {
-            LOGGER.i("exit: Force Stop %s", packages[0])
-            ActivityManagerApis.forceStopPackageNoThrow(packages[0], userId)
-        }
+        // Auto-kill on exit() disabled — was killing the service
+        LOGGER.i("exit: Skipping force-stop for %s", packages.firstOrNull() ?: "unknown")
     }
 
     override fun attachUserService(binder: IBinder?, options: Bundle) {
