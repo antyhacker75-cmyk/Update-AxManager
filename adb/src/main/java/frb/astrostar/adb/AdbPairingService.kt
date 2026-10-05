@@ -381,15 +381,7 @@ class AdbPairingService : Service() {
 
                 adbMdns?.stop()
 
-                CoroutineScope(Dispatchers.Main).launch {
-
-                    delay(30000)
-
-                    if (started) {
-                        stopSearch()
-                        stopSelf()
-                    }
-                }
+                // Auto-kill removed — service stays alive
             }
 
         } else {
