@@ -153,7 +153,9 @@ install_plugin() {
   MODID=$(grep_prop id "$TMPPROP")
   MODNAME=$(grep_prop name "$TMPPROP")
   MODAUTH=$(grep_prop author "$TMPPROP")
-  MODPLUGIN=$(grep_prop astrostarPlugin "$TMPPROP")
+  [ -z "$MODPLUGIN" ] && MODPLUGIN=$(grep_prop astrostarPlugin "$TMPPROP")
+  [ -z "$MODPLUGIN" ] && MODPLUGIN=$(grep_prop axeronPlugin "$TMPPROP")
+  [ -z "$MODPLUGIN" ] && MODPLUGIN=$(grep_prop axeronPlugin "$TMPPROP")
   
   [ -z "$MODPLUGIN" ] && abort "! This module not supporting AxManager Plugin!"
 
