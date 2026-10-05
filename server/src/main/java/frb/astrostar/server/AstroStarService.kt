@@ -40,7 +40,7 @@ import frb.astrostar.shared.AstroStarApiConstant
 import frb.astrostar.shared.AstroStarApiConstant.server.BINDER_DESCRIPTOR
 import frb.astrostar.shared.AstroStarApiConstant.server.TYPE_ENV
 import frb.astrostar.shared.AstroStarApiConstant.server.TYPE_NEW_ENV
-import frb.astrostar.shared.AstroStaeApiConstant.server.VERSION_CODE
+import frb.astrostar.shared.AstroStarApiConstant.server.VERSION_CODE
 import frb.astrostar.shared.AstroStarApiConstant.server.VERSION_NAME
 import frb.astrostar.shared.PathHelper
 import frb.astrostar.shared.ShizukuApiConstant.ATTACH_APPLICATION_API_VERSION
