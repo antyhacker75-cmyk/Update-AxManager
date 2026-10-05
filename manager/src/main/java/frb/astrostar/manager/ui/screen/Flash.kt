@@ -302,15 +302,12 @@ fun FlashScreen(
         if (finishIntent) activity?.finish()
     }
 
-//    var confirmed by rememberSaveable { mutableStateOf(flashIt !is FlashIt.FlashPlugins) }
     var pendingFlashIt by rememberSaveable { mutableStateOf<FlashIt?>(null) }
-
 
     if (flashIt is FlashIt.FlashUninstall) {
         flashing == FlashingStatus.FLASHING
         pendingFlashIt = flashIt
     }
-
 
     InstallDialog(
         confirm = flashing == FlashingStatus.IDLE,
@@ -328,7 +325,6 @@ fun FlashScreen(
 
     val scope = rememberCoroutineScope()
     val logContent = rememberSaveable { StringBuilder() }
-    //Is text is a log?
     var text by rememberSaveable { mutableStateOf("") }
     var hasFlashed by rememberSaveable { mutableStateOf(false) }
 
@@ -338,19 +334,16 @@ fun FlashScreen(
         Log.d("FlashScreen", "flashing: $flashing")
         if (pendingFlashIt == null || text.isNotEmpty() || hasFlashed) return@LaunchedEffect
         hasFlashed = true
-        // No need for an external 'scope' when inside LaunchedEffect
         launch(Dispatchers.IO) {
             val result = flashIt(
                 pendingFlashIt!!,
                 onStdout = {
                     logContent.append(it).append("\n")
-                    if (AnsiFilter.isScreenControl(it)) { // clear command
-                        // Switch to the main thread to update state
+                    if (AnsiFilter.isScreenControl(it)) {
                         launch(Dispatchers.Main) {
                             text = AnsiFilter.stripAnsi(it) + "\n"
                         }
                     } else {
-                        // Switch to the main thread to update state
                         launch(Dispatchers.Main) {
                             text += "$it\n"
                         }
@@ -360,7 +353,6 @@ fun FlashScreen(
                     logContent.append(it).append("\n")
                 })
 
-            // After the background task is done, switch to the main thread to update the final state
             withContext(Dispatchers.Main) {
                 var finalLogText = ""
                 if (result.code != 0) {
@@ -376,7 +368,6 @@ fun FlashScreen(
             }
         }
     }
-
 
     val snackBarHost = LocalSnackbarHost.current
     val scrollState = rememberScrollState()
@@ -463,7 +454,6 @@ fun FlashScreen(
             }
 
             if (flashing == FlashingStatus.FAILED) {
-                // Close button for modules flashing
                 ExtendedFloatingActionButton(
                     text = { Text(text = stringResource(R.string.close)) },
                     icon = { Icon(Icons.Filled.Close, contentDescription = null) },
@@ -495,7 +485,7 @@ fun FlashScreen(
                 modifier = Modifier.padding(8.dp),
                 text = text.parseAsAnsiAnnotatedString(),
                 style = MaterialTheme.typography.bodySmall.copy(
-                    lineHeight = MaterialTheme.typography.bodyMedium.fontSize, // samain dengan fontSize
+                    lineHeight = MaterialTheme.typography.bodyMedium.fontSize,
                     lineHeightStyle = LineHeightStyle(
                         alignment = LineHeightStyle.Alignment.Center,
                         trim = LineHeightStyle.Trim.Both
@@ -507,7 +497,6 @@ fun FlashScreen(
             )
         }
     }
-
 }
 
 suspend fun flashModulesSequentially(
