@@ -3,7 +3,7 @@ package frb.astrostar.adb.util
 import android.os.Build
 import android.os.SystemProperties
 import androidx.annotation.ChecksSdkIntAtLeast
-import frb.axeron.api.core.AxeronSettings
+import frb.astrostar.api.core.AstroStarSettings
 
 object AdbEnvironment {
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.R)
