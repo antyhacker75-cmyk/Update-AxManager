@@ -112,7 +112,7 @@
     <string name="ask_install_plugin_msg">The following modules will be installed:</string>
     <string name="auto_enable_plugin">Auto enabled after install</string>
     <string name="manual_enable_plugin">Will remain disabled</string>
-    <string name="log_error_code">Error code: %d.\n %s Please save and check the log.\n</string>
+    <string name="log_error_code">Error: %1$s, Code: %2$d</string>
     <string name="re_ignite_and_close"><![CDATA[Re-ignite & Close]]></string>
     <string name="restart_and_close"><![CDATA[Restart & Close]]></string>
     <string name="flashing">Flashing</string>
