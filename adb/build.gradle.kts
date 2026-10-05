@@ -47,4 +47,6 @@ dependencies {
 
     implementation(libs.rikka.hidden.compat)
     compileOnly(libs.rikka.hidden.stub)
+
+implementation 'androidx.core:core-ktx:1.12.0'  // Or the latest stable version
 }
