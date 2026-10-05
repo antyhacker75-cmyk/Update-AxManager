@@ -34,7 +34,7 @@
     <string name="plugin_author">Penulis</string>
     <string name="plugin_id">ID</string>
     <string name="plugin_version_code">KodeVersi</string>
-    <string name="plugin_astrostar_support">DukunganAxeron</string>
+    <string name="plugin_astrostar_support">Dukungan AstroStar</string>
     <string name="plugin_update_json">UpdateJson</string>
     <string name="plugin_update_json_empty">Kosong</string>
     <string name="ignite">Ignite</string>
