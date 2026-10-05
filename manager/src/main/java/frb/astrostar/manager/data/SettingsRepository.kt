@@ -48,7 +48,7 @@ class SettingsRepository(private val contentResolver: ContentResolver) {
             SettingType.SYSTEM -> putSetting(type, key, value)
 
             SettingType.ANDROID_PROP -> setAndroidProp(key, value)
-            SettingType.ASTRO_ENV -> setAstroStarEnv(key, value)
+            SettingType.ASTROSTAR_ENV -> setAstroStarEnv(key, value)
         }
     }
 
