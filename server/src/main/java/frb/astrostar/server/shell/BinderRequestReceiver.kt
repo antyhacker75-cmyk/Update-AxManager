@@ -8,7 +8,6 @@ import android.content.Intent
 import android.os.PowerManager
 import android.provider.Settings
 import androidx.core.net.toUri
-import frb.astrostar.api.SystemServiceHelper.getSystemService
 import frb.astrostar.server.ServerConstants
 
 
