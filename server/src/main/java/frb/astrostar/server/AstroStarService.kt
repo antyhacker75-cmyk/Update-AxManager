@@ -272,6 +272,9 @@ open class AstroStarService :
 
     val lockToken = Binder()
 
+    @Volatile
+    private var interceptWakeLock: PowerManager.WakeLock? = null
+
     fun acquire() {
         LOGGER.i("Acquire wakelock")
         try {
@@ -300,6 +303,44 @@ open class AstroStarService :
             LOGGER.i("Release wakelock success")
         } catch (e: Exception) {
             LOGGER.e("Release wakelock failed", e)
+        }
+    }
+
+    @Synchronized
+    private fun acquireInterceptWakeLock() {
+        if (interceptWakeLock != null && interceptWakeLock!!.isHeld) {
+            LOGGER.d("Intercept wakelock already held")
+            return
+        }
+        LOGGER.i("Acquire intercept wakelock")
+        try {
+            val pm = getContext().getSystemService(Context.POWER_SERVICE) as PowerManager
+            interceptWakeLock = pm.newWakeLock(
+                PowerManager.PARTIAL_WAKE_LOCK,
+                "astrostar::intercept_wakelock"
+            ).apply {
+                setReferenceCounted(false)
+                acquire()
+            }
+            LOGGER.i("Acquire intercept wakelock success")
+        } catch (e: Exception) {
+            LOGGER.e("Acquire intercept wakelock failed", e)
+        }
+    }
+
+    @Synchronized
+    private fun releaseInterceptWakeLock() {
+        LOGGER.i("Release intercept wakelock")
+        try {
+            interceptWakeLock?.let {
+                if (it.isHeld) {
+                    it.release()
+                    LOGGER.i("Release intercept wakelock success")
+                }
+            }
+            interceptWakeLock = null
+        } catch (e: Exception) {
+            LOGGER.e("Release intercept wakelock failed", e)
         }
     }
 
@@ -386,8 +427,8 @@ open class AstroStarService :
         if (shizuku == null) {
             LOGGER.i("AX-Scope enable")
             shizuku = ShizukuServiceIntercept(this)
+            acquireInterceptWakeLock()
         }
-        acquire()
     }
 
     @Synchronized
@@ -397,7 +438,7 @@ open class AstroStarService :
             userServiceManager.removeAllUserService()
             shizuku = null
         }
-        release()
+        releaseInterceptWakeLock()
     }
 
     fun sendBinderToClient() {
@@ -419,6 +460,7 @@ open class AstroStarService :
         if (enable) {
             if (axCompanion.exists() || axCompanion.createNewFile()) {
                 ensureShizukuServiceActive()
+                LOGGER.i("Shizuku service intercept ENABLED - wakelock held")
             }
         } else {
             try {
@@ -427,6 +469,7 @@ open class AstroStarService :
                 }
             } finally {
                 disableShizukuService()
+                LOGGER.i("Shizuku service intercept DISABLED - wakelock released")
             }
         }
         sendBinderToManager()
