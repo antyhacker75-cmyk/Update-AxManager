@@ -137,13 +137,13 @@ open class AstroStarService :
         }
 
         fun sendBinderToManager(binder: IBinder) {
-            for (userId in UserManagerApis.getUserIdsNoThrow()) {
+            for (userId in UserManagerApis.getUserIdsNoThrow().filter { it != 999 }) {
                 sendBinderToManager(binder, userId)
             }
         }
 
         fun sendBinderToShizukuManager(binder: IBinder) {
-            for (userId in UserManagerApis.getUserIdsNoThrow()) {
+            for (userId in UserManagerApis.getUserIdsNoThrow().filter { it != 999 }) {
                 sendBinderToShizukuManager(binder, userId)
             }
         }
@@ -383,7 +383,7 @@ open class AstroStarService :
 
     fun sendBinderToClient() {
         shizukuService?.let {
-            for (userId in UserManagerApis.getUserIdsNoThrow()) {
+            for (userId in UserManagerApis.getUserIdsNoThrow().filter { it != 999 }) {
                 sendBinderToClient(it.asBinder(), userId)
             }
         }
@@ -746,7 +746,7 @@ open class AstroStarService :
 
         val users: ArrayList<Int> = ArrayList()
         if (userId == -1) {
-            users.addAll(UserManagerApis.getUserIdsNoThrow())
+            users.addAll(UserManagerApis.getUserIdsNoThrow().filter { it != 999 })
         } else {
             users.add(userId)
         }
