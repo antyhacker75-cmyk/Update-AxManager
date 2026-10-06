@@ -368,7 +368,7 @@ open class AstroStarService :
         getManagerApplicationInfo() ?: exitProcess(ServerConstants.MANAGER_APP_NOT_FOUND)
 
         if (axCompanion.exists()) {
-            shizuku = ShizukuServiceIntercept(this)
+            ensureShizukuServiceActive()
         }
 
         BinderSender.register(asInterface(this))
@@ -379,6 +379,25 @@ open class AstroStarService :
         }
 
         acquire()
+    }
+
+    @Synchronized
+    private fun ensureShizukuServiceActive() {
+        if (shizuku == null) {
+            LOGGER.i("AX-Scope enable")
+            shizuku = ShizukuServiceIntercept(this)
+        }
+        acquire()
+    }
+
+    @Synchronized
+    private fun disableShizukuService() {
+        if (shizuku != null) {
+            LOGGER.i("AX-Scope disable")
+            userServiceManager.removeAllUserService()
+            shizuku = null
+        }
+        release()
     }
 
     fun sendBinderToClient() {
@@ -398,14 +417,16 @@ open class AstroStarService :
 
     override fun enableShizukuService(enable: Boolean) {
         if (enable) {
-            if (axCompanion.createNewFile()) {
-                LOGGER.i("AX-Scope")
-                shizuku = ShizukuServiceIntercept(this)
+            if (axCompanion.exists() || axCompanion.createNewFile()) {
+                ensureShizukuServiceActive()
             }
         } else {
-            if (axCompanion.delete()) {
-                userServiceManager.removeAllUserService()
-                shizuku = null
+            try {
+                if (axCompanion.exists() && !axCompanion.delete()) {
+                    LOGGER.w("Failed to delete ax companion marker: %s", axCompanion.absolutePath)
+                }
+            } finally {
+                disableShizukuService()
             }
         }
         sendBinderToManager()
